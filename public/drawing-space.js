@@ -87,7 +87,7 @@
             //console.log('repainting');
 
             var imageData = this.c.getImageData(0, 0,
-                this.width, this.height);
+                this.width, 100);
 
             //console.log('length', imageData);
             for (var i = 0; i < imageData.data.length + 4; i += 4) {

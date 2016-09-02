@@ -18,18 +18,56 @@
         <script>
 
         var canvas = document.getElementById('theCanvas');
-        var c = canvas.getContext('2d');
+        var brush = canvas.getContext('2d');
 
-        c.fillStyle = 'red';
+        brush.fillStyle = 'yellow';
+        brush.strokeStyle = 'black';
 
 
+        var x = 50;
+        var direction = 1;
+        var radius = 50;
+        var mouthPosition = 0.50;
+        var mouthDirection = 1;
 
         function drawStuff() {
 
+          if (x > canvas.width - radius) {
+            direction = -1;
+          }
+          else if (x < radius) {
+            direction = 1;
+          }
+
+          x += (direction * 5);
+
+          if (mouthPosition > 0.8) {
+            mouthDirection = -1;
+          }
+          else if (mouthPosition < 0.15) {
+            mouthDirection = 1;
+          }
+
+          mouthPosition += 0.10 * mouthDirection;
+
+          brush.clearRect(0, 0, canvas.width, canvas.height);
+
+
+          brush.beginPath();
+          if (direction === 1) {
+            brush.arc(x, 75, radius, mouthPosition, (2 * Math.PI) - mouthPosition);
+          }
+          else {
+            brush.arc(x, 75, radius, Math.PI - mouthPosition, Math.PI + mouthPosition, true);
+          }
+          brush.lineTo(x, 75);
+          brush.closePath();
+          brush.stroke();
+          brush.fill();
         }
 
         function loop() {
-            //console.log('drawing');
+            console.log('drawing');
             drawStuff();
 
             window.requestAnimationFrame(loop);

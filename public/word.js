@@ -15,7 +15,7 @@
 
         c.fillStyle = '#F00';
         c.font = '20px serif';
-        c.fillText('Yo dawg', this.x, this.y + 20);
+        c.fillText('Hello Mark', this.x, this.y + 20);
 
         this.drawSelectedState();
     };
