@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+
+        <p>Test page</p>
+
+        <canvas
+            style="border: solid 1px #000;"
+            id="theCanvas" width="800">
+        </canvas>
+
+        <p><a href="objects-in-space.html">Objects in Space</a></p>
+        <p><a href="https://s3-us-west-2.amazonaws.com/codebukit/signature.html">Signature Pad</a></p>
+
+
+
+        <script>
+
+        var canvas = document.getElementById('theCanvas');
+        var c = canvas.getContext('2d');
+
+        c.fillStyle = 'red';
+
+
+
+        function drawStuff() {
+
+        }
+
+        function loop() {
+            //console.log('drawing');
+            drawStuff();
+
+            window.requestAnimationFrame(loop);
+        }
+
+        window.requestAnimationFrame(loop);
+
+
+
+        </script>
+
+
+    </body>
+</html>
